@@ -1,0 +1,60 @@
+
+Cadence (R) Virtuoso (R) Spectre (R) Circuit Simulator
+Version 11.1.0.366.isr7 64bit -- 20 Mar 2012
+Copyright (C) 1989-2012 Cadence Design Systems, Inc. All rights reserved worldwide. Cadence, Virtuoso and Spectre are registered trademarks of Cadence Design Systems, Inc. All others are the property of their respective holders.
+
+Protected by U.S. Patents: 
+        5,610,847; 5,790,436; 5,812,431; 5,859,785; 5,949,992; 5,987,238; 
+        6,088,523; 6,101,323; 6,151,698; 6,181,754; 6,260,176; 6,278,964; 
+        6,349,272; 6,374,390; 6,493,849; 6,504,885; 6,618,837; 6,636,839; 
+        6,778,025; 6,832,358; 6,851,097; 6,928,626; 7,024,652; 7,035,782; 
+        7,085,700; 7,143,021; 7,493,240; 7,571,401.
+
+Includes RSA BSAFE(R) Cryptographic or Security Protocol Software from RSA Security, Inc.
+
+User: lizongh2   Host: ug150   HostID: 6480960D   PID: 26444
+Memory  available: 10.9687 GB  physical: 16.7342 GB
+CPU Type: Intel(R) Core(TM) i7-4790 CPU @ 3.60GHz
+          Processor PhysicalID CoreID Frequency
+              0         0        0     3605.5
+              1         0        1     3886.5
+              2         0        2     3633.0
+              3         0        3     3726.6
+
+
+Simulating `input.scs' on ug150 at 10:45:46 PM, Wed Jan 15, 2020 (process id: 26444).
+Current working directory: /nfs/ug/homes-5/l/lizongh2/cmos65nm/simulation/a1/spectre/schematic/netlist.
+Environment variable:
+    SPECTRE_DEFAULTS=-I.
+Command line:
+     \
+        /CMC/tools/cadence/MMSIM11.10.366_lnx86/tools.lnx86/spectre/bin/64bit/spectre  \
+        -env artist5.1.0 +escchars +log ../psf/spectre.out -format sst2  \
+        -raw ../psf +lqtimeout 900 -maxw 5 -maxn 5 input.scs
+
+Loading /CMC/tools/cadence/MMSIM11.10.366_lnx86/tools.lnx86/cmi/lib/64bit/5.0/libinfineon_sh.so ...
+Loading /CMC/tools/cadence/MMSIM11.10.366_lnx86/tools.lnx86/cmi/lib/64bit/5.0/libphilips_sh.so ...
+Loading /CMC/tools/cadence/MMSIM11.10.366_lnx86/tools.lnx86/cmi/lib/64bit/5.0/libsparam_sh.so ...
+Loading /CMC/tools/cadence/MMSIM11.10.366_lnx86/tools.lnx86/cmi/lib/64bit/5.0/libstmodels_sh.so ...
+
+Fatal error found by spectre during AHDL read-in.
+    FATAL (VACOMP-2095): File 'ahdl.def' does not appear to be a valid Verilog-A file. In previous releases, 'ahdl.def' was a typical file name for the SpectreHDL view of a component in the Virtuoso Analog Design Environment but the software no longer supports SpectreHDL. If this file is a SpectreHDL file, you need to replace it with a valid Verilog-A equivalent. Check for a valid Verilog-A view for this component or create one if one does not exist.
+
+
+Time for NDB Parsing: CPU = 44 ms, elapsed = 216.432 ms.
+Time accumulated: CPU = 44 ms, elapsed = 216.432 ms.
+Peak resident memory used = 55.2 Mbytes.
+
+
+Time for parsing: CPU = 0 s, elapsed = 19.0735 us.
+Time accumulated: CPU = 44 ms, elapsed = 217.551 ms.
+Peak resident memory used = 56.3 Mbytes.
+
+
+Aggregate audit (10:45:47 PM, Wed Jan 15, 2020):
+Time used: CPU = 44 ms, elapsed = 219 ms, util. = 20.1%.
+Time spent in licensing: elapsed = 183 ms, percentage of total = 84%.
+Peak memory used = 56.3 Mbytes.
+Simulation started at: 10:45:46 PM, Wed Jan 15, 2020, ended at: 10:45:47 PM, Wed Jan 15, 2020, with elapsed time (wall clock): 219 ms.
+spectre completes with 1 error, 0 warnings, and 0 notices.
+spectre terminated prematurely due to fatal error.

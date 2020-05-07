@@ -1,0 +1,346 @@
+<HTML>
+<HEAD>
+<TITLE>calibrerun</TITLE>
+</HEAD>
+<BODY BACKGROUND="htmlDB/st.gif">
+Parent page: <a href=DKCust_CalibreInt.html>DKCust_CalibreInt</a>
+<H2><B>calibrerun</B></H2>
+
+Version 2.19
+<P>
+Design-Kit Calibre Run Procedure
+<P>
+<P><FONT SIZE=-1>Copyright STMicroelectronics (ST). Reproduction and communication of this document is strictly prohibited unless specifically authorized in writing by ST.</FONT>
+<HR>
+
+  <H3>ASSOCIATED KEY</H3>
+<P>
+    calibrerun
+   
+
+
+
+  <H3>DESCRIPTION</H3>
+<P>
+    <B>calibrerun</B> is a unique command to run calibre -gui 
+    with the choosen Design Kit Rule File : 
+    either  drc antennadrc lvs tiling 
+    or      drc lvs tiling drcMask lvsMask tilingMask
+    <B>calibrerun</B> allows to run calibre -gui either in interactive mode or in batch mode.
+   
+
+<P>
+    the <B>calibrerun</B> command may be used either in command line or with gui interface.
+   
+
+<P>
+    To run <B>calibrerun</B> with the gui interface : in a Unix window, type command :
+         <B>calibrerun</B> -gui
+   
+
+<P>
+         <B>calibrerun</B> -gui allows to run calibre -gui either in interactive mode or in batch mode and <B>calibrerun</B> -gui &amp; is the recommanded way to prepare batch command lines which will then be included in scripts.
+   
+
+<P>
+    To run drc in interactive mode with <B>calibrerun</B> with the command line : in a Unix window, type command :
+         <B>calibrerun</B> -drc
+   
+
+<P>
+    To run Antenna in interactive mode with <B>calibrerun</B> with the command line : in a Unix window, type command :
+         <B>calibrerun</B> -ant
+   
+
+<P>
+    To run lvs in interactive mode with <B>calibrerun</B> with the command line : in a Unix window, type command :
+         <B>calibrerun</B> -lvs
+   
+
+<P>
+    Batch mode is recommanded for tiling althought it is possible to run tiling in interactive mode with <B>calibrerun</B> with the command line : in a Unix window, type command :
+         <B>calibrerun</B> -tiling
+   
+
+<P>
+    ......
+   
+
+<P>
+     <B>calibrerun</B> -gui allows to run calibre -gui -batch
+          -batch option must then be activated in <B>calibrerun</B> -gui form.
+          This is the recommanded way to prepare command lines to include in scripts.
+   
+
+<P>
+        when -batch is not activated, Calibre considers all relative files path are relative to run directory.
+        when -batch is activated, all <B>calibrerun</B> input files path are considered relative to current directory.
+   
+
+<P>
+        when -batch option is activated, some additional parameters are required such as :
+   
+
+<P>
+                 for drc ant and tiling  -drcLayoutPaths -drcLayoutPrimary 
+   
+
+<P>
+                 for lvs -lvsLayoutPaths -lvsLayoutPrimary -lvsSourcePath -lvsSourcePrimary
+   
+
+<P>
+              when -multiple option is not activated only one gds file and one netlist file may be specified.
+              when -multiple option is activated it allows to specify several gds and/or netlist files instead of only one.
+   
+
+<P>
+                    -multiple -drcLayoutPaths TOP.gds Cell1.gds Cell2.gds Cell3.gds
+   
+
+<P>
+                    -multiple -lvsLayoutPaths TOP.gds Cell1.gds Cell2.gds Cell3.gds
+                    -lvsSourcePath  TOP.src.net Cell1.src.net Cell2.src.net Cell3.src.net
+   
+
+<P>
+                    -multiple also works for unique files but the file browser is then not available.
+   
+
+<P>
+                -drcRunDir and -lvsRunDir are optional parameters.
+               All relative paths are relative to current directory and are converted in full path .
+               If ommitted, run directory is set to default value.
+               In case it does not already exist, run directory is created before launching calibre.
+   
+
+<P>
+    When RunDir is specified, Run directory is created in case it does not exists
+         (workaround mentor calibre bug Run directory not created)
+    When RunDir specified in options other path specified in options are converted to fullpath
+         to workaround mentor calibre bug which looks for input files relatively to rundir instead of 
+         looking for it relatively to current directory.
+   
+
+<P>
+                 for tiling -drcResultsCellSuffix is an optional parameter
+                 when not specified the suffix of result cells  in batch mode is _&lt;CellName&gt;_TILES .
+                 When running interactive mode, in Order to get the same result, the user has to 
+                 customize himself the Outputs-&gt;Cell Suffix field of the calibre -gui form.
+                 For tiling -drcResultsFile is an optional parameter
+                 when not specified the results File in batch mode is &lt;CellName&gt;_TILES.gds2
+                 When running interactive mode, in Order to get the same result, the user has to 
+                 customize himself the Outputs-&gt;File field of the calibre -gui form 
+                 (the DK default value is TILES.gds2).
+   
+
+<P>
+                 when run occurs on a 64 bits machine, the 64 bits option "-cmnRun64 1" is 
+                 automatically added to the calibre command without any user specification.
+   
+
+<P>
+                 -options allows to specified other calibre options  such as spice or hcell ...
+                 for example :           -options "-cmnDontWaitForLicense 0 -drcMaxResultAll 1"
+                 For input files specified in option The relative path will be converted to full path
+                 For example : 
+                 -options "-lvsUseHCells 1 -lvsHCellsFile ../tt.hcell -lvsIncludeFiles /tmp/aa ../bb ccc "
+                 will be converted into
+                 -lvsUseHCells 1 -lvsHCellsFile /work/ucddevmo/44/tt.hcell -lvsIncludeFiles /tmp/aa /work/ucddevmo/44/bb /work/ucddevmo/44/c065/ccc 
+                 For example : 
+                 -options "-lvsUseHCells 1 -lvsSpiceFile ../myspice" 
+                 will be converted into -lvsUseHCells 1 -lvsSpiceFile /work/ucddevmo/44/c065/myspice
+
+   
+
+<P>
+         <B>calibrerun</B>  exapmles: 
+   
+
+<P>
+         <B>calibrerun</B> -drc -batch -drcLayoutPaths TEST.gds -drcLayoutPrimary TEST
+   
+
+<P>
+         <B>calibrerun</B> -lvs -batch -lvsLayoutPaths TEST.gds -lvsLayoutPrimary TEST -lvsSourcePath TEST.netlist -lvsSourcePrimary TEST 
+   
+
+<P>
+         <B>calibrerun</B> -lvs -batch -lvsLayoutPaths TEST.gds -lvsLayoutPrimary TEST -lvsSourcePath TEST.netlist -lvsSourcePrimary TEST -options "-lvsSpiceFile /project/be/mydir/spice"
+   
+
+<P>
+         <B>calibrerun</B> -lvs -batch -lvsLayoutPaths TEST.gds -lvsLayoutPrimary TEST -lvsSourcePath TEST.netlist -lvsSourcePrimary TEST -options "-lvsUseHCells 1 -lvsHCellsFile /project/be/mydir/hcell"
+
+   
+
+<P>
+    with calibre -gui and  batch option on, a file called calibrerun_&lt;verif&gt;_&lt;topcell&gt;.command  is created with the command line.
+    To perform a second time the same verification  without the -gui, just type Unix command : source calibrerun_&lt;verif&gt;_&lt;topcell&gt;.command
+    This command line may be included in scripts.
+   
+
+<P>
+      -cust parameter is optional it allows to specify a file containing the switches customization.
+           Switches specified in -cust file are customized,  other switches are set to the default value specified in DK.
+           When -cust parameter is ommitted, all the switches are set to their default value.
+   
+
+<P>
+           The format of the customization file is 
+   
+
+<P>
+           &lt;switch name&gt; &lt;value&gt; 
+   
+
+<P>
+           To set switch on (true) : value is 1 , To set switch off  (false) , value is 0
+   
+
+<P>
+            For example : to customize ClassPad to "ClassI5" and do not Ckeck Density , the customization file must contains the two following lines : 
+   
+
+<P>
+            DENSITY_CHECK 0
+   
+
+<P>
+            ClassPAD ClassI5
+   
+
+<P>
+            For example : to customize ClassPad to "ClassJ1" and Ckeck Shrinkability and Recommanded Rules , the customization file must contains the three following lines : 
+   
+
+<P>
+            SHRINK 1
+   
+
+<P>
+            ClassPAD ClassJ1
+   
+
+<P>
+            RECOMMENDED_RULES 1
+   
+
+<P>
+
+       -signoff parameter allows to filter sign-off switches
+          when signoff is yes:  
+          if -batch is off =&gt; sign-off switches are not displayed in the switches customisation form
+                              sign-off switches are set to sign-off value and other switches are customizable.
+                                 
+          if -batch is on  =&gt; sign-off switches cannot be customized, even though described in the customization file
+                              sign-off switches are set to sign-off value.
+
+          signoff parameter default value is yes (only non signoff switches are customizable)
+   
+
+<P>
+    To Get Help on <B>calibrerun</B> command itself : in a Unix window, type command :
+   
+
+<P>
+         <B>calibrerun</B> -help
+   
+
+<P>
+ 
+IMPORTANT :
+    The <B>calibrerun</B> command parameters order is not free.
+   
+
+<P>
+    The -batch option must be specified at the beginning of the command line because its presence induce other batch parameters.
+   
+
+<P>
+    For calibre -gui it is recommanded to fill the form from top to bottom.
+   
+
+<P>
+    The <B>calibrerun</B> command fails when -batch option is specified at the end of the command line.
+    The <B>calibrerun</B> command fails when -multiple option is specified before -batch option in command line.
+    The <B>calibrerun</B> command fails when -multiple option is specified at the end of the command line.
+   
+
+
+ 
+  <H4>Options</H4>
+<P><DL><DT>[-drc]<DD>Drc Verification . Type: 'bool', optional, default: 'false'
+<DT>[-lvs]<DD>Lvs Verification . Type: 'bool', optional, default: 'false'
+<DT>[-tiling]<DD>Tiling . Type: 'bool', optional, default: 'false'
+<DT>[-drcMask]<DD>Drc Mask Verification . Type: 'bool', optional, default: 'false'
+<DT>[-lvsMask]<DD>Lvs Mask Verification . Type: 'bool', optional, default: 'false'
+<DT>[-tilingMask]<DD>Tiling on Mask . Type: 'bool', optional, default: 'false'
+<DT>[-batch]<DD>batch Mode. Type: 'bool', optional, default: 'false'
+<DT>[-multiple]<DD>Several .gds and or netlist files. Type: 'bool', optional, default: 'false', can be specified when '$batch'
+<DT>[-drcLayoutPaths &lt;drcLayoutPaths&gt;]<DD>Gds file Full Path . Type: 'file', default: '', can be specified when '$batch &amp;&amp; !$multiple &amp;&amp; ($drc||$til||$drcMask||$tilMask)'
+<DT>[-drcLayoutMultiple &lt;drcLayoutMulti&gt;]<DD>Gds file Full Path . Type: 'string', default: '', can be specified when '$batch &amp;&amp; $multiple &amp;&amp; ($drc||$til||$drcMask||$tilMask)'
+<DT>[-drcLayoutPrimary &lt;drcLayoutPrim&gt;]<DD>Top Cell Name . Type: 'string', default: '', can be specified when '$batch &amp;&amp; ($drc||$til||$drcMask||$tilMask)'
+<DT>[-drcRunDir &lt;drcRunDir&gt;]<DD>Run directory Path . Type: 'path', optional, can be specified when '$batch &amp;&amp; ($drc||$til||$drcMask||$tilMask)'
+<DT>[-lvsLayoutPaths &lt;lvsLayoutPaths&gt;]<DD>Gds file Full Path . Type: 'file', default: '', can be specified when '$batch &amp;&amp; !$multiple &amp;&amp; ($lvs||$lvsMask)'
+<DT>[-lvsLayoutPaths &lt;lvsLayoutMulti&gt;]<DD>Gds file Full Path . Type: 'string', default: '', can be specified when '$batch &amp;&amp; $multiple &amp;&amp; ($lvs||$lvsMask)'
+<DT>[-lvsLayoutPrimary &lt;lvsLayoutPrim&gt;]<DD>Top Cell Name . Type: 'string', default: '', can be specified when '$batch &amp;&amp; ($lvs||$lvsMask)'
+<DT>[-lvsSourcePath &lt;lvsSourcePath&gt;]<DD>Cdl Netlist File Full Path. Type: 'file', default: '', can be specified when '$batch &amp;&amp; !$multiple &amp;&amp; ($lvs||$lvsMask)'
+<DT>[-lvsSourcePath &lt;lvsSourceMulti&gt;]<DD>Cdl Netlist File Full Path. Type: 'string', default: '', can be specified when '$batch &amp;&amp; $multiple &amp;&amp; ($lvs||$lvsMask)'
+<DT>[-lvsSourcePrimary &lt;lvsSourcePrim&gt;]<DD>Top Cell Name . Type: 'string', default: '', can be specified when '$batch &amp;&amp; ($lvs||$lvsMask)'
+<DT>[-lvsRunDir &lt;lvsRunDir&gt;]<DD>Run directory Path . Type: 'path', optional, can be specified when '$batch &amp;&amp; ($lvs||$lvsMask)'
+<DT>[-drcResultsFile &lt;drcResultsFile&gt;]<DD>Name of the Output gds2 file containing tiles . Type: 'string', optional, can be specified when '$batch &amp;&amp; ($til||$tilMask)'
+<DT>[-drcResultsCellSuffix &lt;drcResultsCellSuffix&gt;]<DD>Suffix of the Cells containing Tiles . Type: 'string', optional, can be specified when '$batch &amp;&amp; ($til||$tilMask)'
+<DT>[-options &lt;options&gt;]<DD>Additional Calibre Options . Type: 'string', optional, can be specified when '$batch'
+<DT>[-cust &lt;custFile&gt;]<DD>ST Switches Customization File . Type: 'file', optional, can be specified when '$batch'
+<DT>[-signoff &lt;signoff&gt;]<DD>sign-off Verification: sign-off switches are kept to mandatory value. Type: 'enum string {"yes" "no"}', optional, default: 'yes'
+<DT>[-merge]<DD>Merge Tiling with fgdsOut . Type: 'bool', optional, default: 'false', can be specified when '$batch &amp;&amp; ($til||$tilMask) '
+<DT>[-scale &lt;scale&gt;]<DD>Scale for Tiling Gds2 File. Type: 'float', optional, default: '1000.0', can be specified when '$batch &amp;&amp; ($til||$tilMask) &amp;&amp; $merge'
+<DT>[-verbose]<DD>Verbose execution. Type: 'bool', optional, default: 'false'
+<DT>[-debug]<DD>Debug execution. Type: 'bool', optional, default: 'false'
+<DT>[-arguments]<DD>Display the script parameter description. Type: 'bool', optional, default: 'false'
+<DT>[-help|-h|-u|-U]<DD>Display the script usage. Type: 'bool', optional, default: 'false'
+<DT>[-gui]<DD>Graphical user interface. Type: 'bool', optional, default: 'false'
+</DL>
+
+
+
+
+<H4>Limits</H4>
+<P><UL><LI>must choose either drc or lvs or tiling or drcMask or lvsMask or tilingMask
+<LI>must choose either drc or lvs but not both
+<LI>must choose either drc or til but not both
+<LI>must choose either drc or drcMask but not both
+<LI>must choose either drc or lvsMask but not both
+<LI>must choose either drc or tilMask but not both
+<LI>must choose either lvs or til but not both
+<LI>must choose either lvs or drcMask but not both
+<LI>must choose either lvs or lvsMask but not both
+<LI>must choose either lvs or tilMask but not both
+<LI>must choose either til or drcMask but not both
+<LI>must choose either til or lvsMask but not both
+<LI>must choose either til or tilMask but not both
+<LI>must choose either drcMask or lvsMask but not both
+<LI>must choose either drcMask or tilMask but not both
+<LI>must choose either lvsMask or tilMask but not both
+<LI>-runset -custom -gui are not allowed in options
+<LI>-drcLayoutPaths -drcLayoutPrimary  are not allowed in options
+<LI>-lvsLayoutPaths -lvsLayoutPrimary  are not allowed in options
+<LI>-lvsSourcePath -lvsSourcePrimary  are not allowed in options
+<LI>-drcRunDir -lvsRunDir  are not allowed in options
+</UL>
+
+
+
+
+
+  <H3>AUTHORS</H3>
+<P>STMicrolectronics - Central R&D - DAIS
+
+
+
+
+ 
+</BODY>
+</HTML>
+

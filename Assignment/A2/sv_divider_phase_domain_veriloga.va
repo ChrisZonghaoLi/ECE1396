@@ -1,0 +1,38 @@
+// VerilogA for generic_divider, veriloga
+
+//  Copyright (c) 1999
+//  by Cadence Design Systems, Inc.  All rights reserved.
+//
+//  $Date: 1999/4/20
+//  $Revision: 1
+//
+//  Author:  Jess Chen
+
+// Generic phase domain frequency divider.
+
+// Note: If the divide ratio drops below .0005 the model
+// divides by 2000 and issues a warning.
+//modified by Sorin Voinigescu on Jan.28, 2009, to divide by up to 2000
+
+`include "constants.h"
+`include "discipline.h"
+
+module generic_divider(divide_ratio, f_in , f_out );
+output divide_ratio;
+electrical divide_ratio;
+output f_out ;
+electrical f_out ;
+input f_in ;
+electrical f_in ;
+
+analog begin
+   if (abs(V(divide_ratio)) > 0.0005) V(f_out) <+ V(f_in)/V(divide_ratio);
+   else begin
+      V(f_out) <+ V(f_in)*2000;
+      $display("Serious Warning: The divide ratio passed through zero!!\n");
+      $display("Serious Warning: I've arbitrarily divided by 2000 instead!!\n");
+      $display("\n");
+   end
+end
+
+endmodule

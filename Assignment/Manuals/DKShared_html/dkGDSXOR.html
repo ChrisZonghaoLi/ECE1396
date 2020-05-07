@@ -1,0 +1,72 @@
+<HTML>
+<HEAD>
+<TITLE>dkGDSXOR</TITLE>
+</HEAD>
+<BODY BACKGROUND="htmlDB/st.gif">
+Parent page: <a href=DKCALGDSXOR.html>DKCALGDSXOR</a>
+<H2><B>dkGDSXOR</B></H2>
+
+Version 2.2.1
+<P>
+Design-Kit XOR between two Gds files with Calibre Procedure
+<P>
+<P><FONT SIZE=-1>Copyright STMicroelectronics (ST). Reproduction and communication of this document is strictly prohibited unless specifically authorized in writing by ST.</FONT>
+<HR>
+
+  <H3>ASSOCIATED KEY</H3>
+<P>
+    <B>dkGDSXOR</B>
+   
+
+
+
+  <H3>DESCRIPTION</H3>
+<P>
+    <B>dkGDSXOR</B> compare  gds2 file.
+    It does not require any Design-Kit to run but Calibre ctrl 
+    file and gdsfilter setup file must be specified.
+    Specifying the output gds2 file name is mandatory.
+    It is optional to specify the original gds2 File Name and cell name. This all
+ows to update the ctrl file
+    and the setup file for an other cell and generate dummies for that cell.
+   
+
+
+
+  <H4>Options</H4>
+<P><DL><DT>-gds1 &lt;gdsfile1&gt;<DD>Gds File 1 . Type: 'file', default: ''
+<DT>-cell1 &lt;topcell1&gt;<DD>Cell 1 . Type: 'string', default: ''
+<DT>-gds2 &lt;gdsfile2&gt;<DD>Gds File 2 . Type: 'file', default: ''
+<DT>-cell2 &lt;topcell2&gt;<DD>Cell 2 . Type: 'string', default: ''
+<DT>[-format &lt;choice&gt;]<DD>Choice for the output format. Type: 'enum string {".db" ".gds"}', optional, default: '.db'
+<DT>-grid &lt;grille&gt;<DD>Value of the Grid for the Technology . Type: 'float', default: ''
+<DT>[-resolution &lt;resolution&gt;]<DD>Value of the Resolution for the Technology . Type: 'int', optional, default: '1000'
+<DT>[-merge &lt;mergedt&gt;]<DD>Merge all datatypes of the same layer for the comparison. Type: 'enum string {"yes" "no"}', optional, default: 'no'
+<DT>[-list &lt;datalist&gt;]<DD>list of layers/datatype to compare . Type: 'enum string {"no" "create" "import"}', optional, default: 'no'
+<DT>[-listfile &lt;listfile&gt;]<DD>Path of the layers list . Type: 'file', optional, can be specified when '($datalist=="import")'
+<DT>[-lmt &lt;lmt&gt;]<DD>Layer Map Table To Compare . Type: 'enum string {"yes" "no"}', optional, default: 'no'
+<DT>[-lmtfile &lt;LMTfile&gt;]<DD>Path of the Layer Map Table To Compare . Type: 'file', optional, can be specified when '$lmt=="yes"'
+<DT>[-turbo &lt;turbo&gt;]<DD>Multi-threaded Parallel Processing on several cpu . Type: 'enum string {"yes" "no"}', optional, default: 'yes'
+<DT>[-ncpu &lt;ncpu&gt;]<DD>Maximum Number of Cpu . Type: 'int', optional, can be specified when '$turbo=="yes"'
+<DT>[-display_int2 &lt;display2&gt;]<DD>display second interface results . Type: 'enum string {"yes" "no"}', optional, default: 'yes'
+<DT>[-display_int3 &lt;display3&gt;]<DD>display third interface results . Type: 'enum string {"yes" "no"}', optional, default: 'yes'
+<DT>[-verbose]<DD>Verbose execution. Type: 'bool', optional, default: 'false'
+<DT>[-debug]<DD>Debug execution. Type: 'bool', optional, default: 'false'
+<DT>[-arguments]<DD>Display the script parameter description. Type: 'bool', optional, default: 'false'
+<DT>[-help|-h|-u|-U]<DD>Display the script usage. Type: 'bool', optional, default: 'false'
+<DT>[-gui]<DD>Graphical user interface. Type: 'bool', optional, default: 'false'
+</DL>
+
+
+
+
+
+  <H3>AUTHORS</H3>
+<P>STMicrolectronics - Central R&D - DAIS
+
+
+
+ 
+</BODY>
+</HTML>
+

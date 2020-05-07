@@ -1,0 +1,9 @@
+Instructions on how to access the design kit can be found on the undergraduate linux network at:
+
+/CMC/kits/cmos65nm/==README.ECE1396-ECE412
+
+Please give it a few days before trying. You need to first be register by CMC in Kingston for access to Analog Artist license.
+
+You must also read and sign the NDA posted below.
+
+While you are allowed to show your circuits and simulations, you are not LEGALLY allowed to disclose any cmos65nm technology information.

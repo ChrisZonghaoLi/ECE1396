@@ -1,0 +1,85 @@
+<HTML>
+<HEAD>
+<TITLE>calibreSTSwitchesHelp</TITLE>
+</HEAD>
+<BODY BACKGROUND="htmlDB/st.gif">
+Parent page: <a href=DKCust_CalibreInt.html>DKCust_CalibreInt</a>
+<H2><B>calibreSTSwitchesHelp</B></H2>
+
+Version 2.14
+<P>
+Design-Kit Calibre Run Procedure
+<P>
+<P><FONT SIZE=-1>Copyright STMicroelectronics (ST). Reproduction and communication of this document is strictly prohibited unless specifically authorized in writing by ST.</FONT>
+<HR>
+
+  <H3>ASSOCIATED KEY</H3>
+<P>
+    calibreSTSwitchesHelp
+   
+
+
+
+  <H3>DESCRIPTION</H3>
+<P>
+    <B>calibreSTSwitchesHelp</B> calibreSTSwitchesHelp extract Documentation about switches from calibre cgi file : 
+    either drc antennadrc lvs tiling 
+    or drc lvs tiling drcMask lvsMask tilingMask
+    
+   To Get Help on drc switches, type Unix command :
+   calibreSTSwitchesHelp -drc
+
+   To Get Help on lvs switches, type Unix command :
+   calibreSTSwitchesHelp -lvs
+
+   To Get Help on tiling switches, type Unix command :
+   calibreSTSwitchesHelp -tiling
+
+   ....
+   
+   To Get Help on calibreSTSwitchesHelp command itself, type Unix command :
+   calibreSTSwitchesHelp -help
+
+   
+
+
+ 
+  <H4>Options</H4>
+<P><DL><DT>[-drc]<DD>ST Drc switches doc. Type: 'bool', optional, default: 'false'
+<DT>[-ant]<DD>ST Antenna switches doc. Type: 'bool', optional, default: 'false'
+<DT>[-lvs]<DD>ST Lvs switches doc . Type: 'bool', optional, default: 'false'
+<DT>[-tiling]<DD>ST Tiling switches doc. Type: 'bool', optional, default: 'false'
+<DT>[-verbose]<DD>Verbose execution. Type: 'bool', optional, default: 'false'
+<DT>[-debug]<DD>Debug execution. Type: 'bool', optional, default: 'false'
+<DT>[-arguments]<DD>Display the script parameter description. Type: 'bool', optional, default: 'false'
+<DT>[-help|-h|-u|-U]<DD>Display the script usage. Type: 'bool', optional, default: 'false'
+<DT>[-gui]<DD>Graphical user interface. Type: 'bool', optional, default: 'false'
+</DL>
+
+
+
+
+<H4>Limits</H4>
+<P><UL><LI>must choose either drc or ant or lvs or tiling
+<LI>must choose either drc or ant but not both
+<LI>must choose either drc or lvs but not both
+<LI>must choose either drc or til but not both
+<LI>must choose either ant or lvs but not both
+<LI>must choose either ant or til but not both
+<LI>must choose either lvs or til but not both
+</UL>
+
+
+
+
+
+  <H3>AUTHORS</H3>
+<P>STMicrolectronics - Central R&D - DAIS
+
+
+
+
+ 
+</BODY>
+</HTML>
+

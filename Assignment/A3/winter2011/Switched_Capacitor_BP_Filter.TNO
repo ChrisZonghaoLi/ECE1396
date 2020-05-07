@@ -1,0 +1,25 @@
+********************************************************************************
+***                       Micro-Cap 12.2.0.3 (64 bit)                        ***
+***                                                                          ***
+***                                                                          ***
+***            Transient Analysis of Switched_Capacitor_BP_Filter            ***
+***                          2020-03-10 8:40:31 PM                           ***
+********************************************************************************
+Limits
+======
+Maximum Run Time           2/FIN
+Output Start Time (tstart) 0
+Maximum Time Step          1E-3/FIN
+Number of Points           101
+Temperature                Linear 27
+Retrace Runs               3
+Run Options                Normal
+State Variables            Leave
+Operating Point            Off
+Operating Point Only       Off
+Auto Scale Ranges          On
+Accumulate Plots           Off
+Fixed Time Step            Off
+Periodic Steady State      On
+Ignore Expression Errors   Off
+

@@ -1,0 +1,8 @@
+how to plot for this questions (+ and - of v-r2r and v-ther)?
+
+for trans: v(vout_r2r+)-v(vout_r2r-)+v(vout_ther+)-v(vout_ther+)
+for pass: db20(v(vout_r2r+)-v(vout_r2r-)+v(vout_ther+)-v(vout_ther+))
+
+It is because I define the convention a bit wrong (+ and - for ther)
+
+also, when plot, do not close the calculator, keep it on

@@ -1,0 +1,67 @@
+/*
+ *  Copyright (c) 1999
+ *  by Cadence Design Systems, Inc.  All rights reserved.
+ *
+ *  $Date: 2003/10/06 06:08:37 $
+ *  $Revision: 1.1 $
+ *
+ *  Modified by Sorin Voinigescu
+ *
+ */
+
+// Reference oscillator with phase noise.
+
+// This model transforms input voltage into an output
+// voltage representing the oscillator output frequency in 
+// Mhz. It also models the white and flicker noise of the referecne oscillator
+//The scale factor (sf) is there in case the
+// user needs a different set of units. A change
+// in those units should be reflected in the phase
+// frequency detector model and reference frequency.
+
+
+// frequency_out = sf*(f0)
+// in MegaHerz.
+
+// Input voltage is in volts.
+
+//Modified by Sorin Voinigescu to add VCO phase noise
+ 
+
+`include "constants.h"
+`include "discipline.h"
+
+
+module ref_oscillator(frequency_out_Mhz);
+output frequency_out_Mhz;
+electrical frequency_out_Mhz;
+
+
+parameter real sf = 1 from [0.0 : inf);
+parameter real f0 = 33.75 from [0.0 : inf);
+
+
+// next 4 lines added by Sorin
+
+parameter real noise_enb = 1 from [0 : 1] ;
+parameter integer pm_enb = 1 from [0 : 1] ;     // "1" for phase model and "0" for voltage model
+
+parameter real n = 1e-6 from [0:inf) ;           // white output free-running oscillator phase noise at 1 Hz (rad2/Hz) -140dBc/Hz @10kHz
+parameter real fc = 1e3 from [0:inf) ;          // flicker noise corner frequency (Hz) of reference oscillator in Hz
+
+//n = 10^[(PN@10kHz+ 80)/10]
+
+real x;
+real y;
+real lower;
+
+analog begin
+   
+   V(frequency_out_Mhz) <+ sf*(f0);
+
+//next line adds the phase noise
+
+   V(frequency_out_Mhz) <+ (1e-6/6.28) *(flicker_noise (noise_enb * n , 2 , "wpn") + flicker_noise (noise_enb * n * fc , 3 , "fpn") );
+
+end
+endmodule
